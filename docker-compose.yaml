@@ -2,7 +2,7 @@ services:
   app:
     build: ./backend
     image : blog-app
-    container_name: backend 
+    container_name: blog-app
     command : sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./backend:/app
