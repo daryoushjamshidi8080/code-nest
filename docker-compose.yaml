@@ -1,0 +1,13 @@
+services:
+  app:
+    build: ./backend
+    image : blog-app
+    container_name: backend 
+    command : sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+      - SECRET_KEY=your_secret_key
