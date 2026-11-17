@@ -1,0 +1,286 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | CodeNest</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        };
+    </script>
+
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+            <a href="index.html" class="text-2xl font-extrabold text-indigo-600">
+                CodeNest<span class="text-slate-800 dark:text-white">.</span>
+            </a>
+
+            <div class="flex items-center gap-4">
+                <button id="themeToggle" class="theme-button" aria-label="Toggle theme">
+                    🌙
+                </button>
+
+                <a href="login.html"
+                   class="text-sm font-semibold text-indigo-600 hover:text-indigo-700">
+                    Sign In
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main -->
+    <main class="flex-1 flex items-center justify-center px-5 py-12">
+
+        <div class="w-full max-w-lg">
+
+            <!-- Heading -->
+            <div class="text-center mb-8">
+                <div class="text-5xl mb-4">🚀</div>
+
+                <h1 class="text-3xl font-extrabold mb-3">
+                    Join CodeNest
+                </h1>
+
+                <p class="text-slate-500 dark:text-slate-400">
+                    Create your account and connect with developers.
+                </p>
+            </div>
+
+            <!-- Register Card -->
+            <div class="content-card p-8">
+
+                <form id="registerForm" class="space-y-5">
+
+                    <div>
+                        <label for="fullName" class="block text-sm font-semibold mb-2">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="full_name"
+                            class="form-input"
+                            placeholder="Your full name"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="username" class="block text-sm font-semibold mb-2">
+                            Username
+                        </label>
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            class="form-input"
+                            placeholder="Choose a username"
+                            autocomplete="username"
+                            minlength="3"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="registerEmail" class="block text-sm font-semibold mb-2">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="registerEmail"
+                            name="email"
+                            class="form-input"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="registerPassword" class="block text-sm font-semibold mb-2">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="registerPassword"
+                            name="password"
+                            class="form-input"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required
+                        >
+
+                        <p class="text-xs text-slate-400 mt-2">
+                            Password must contain at least 8 characters.
+                        </p>
+                    </div>
+
+                    <div>
+                        <label for="confirmPassword" class="block text-sm font-semibold mb-2">
+                            Confirm Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirm_password"
+                            class="form-input"
+                            placeholder="Repeat your password"
+                            autocomplete="new-password"
+                            required
+                        >
+                    </div>
+
+                    <div class="flex items-start gap-2 text-sm">
+                        <input
+                            type="checkbox"
+                            id="acceptTerms"
+                            class="mt-1"
+                            required
+                        >
+
+                        <label for="acceptTerms" class="text-slate-500 dark:text-slate-400">
+                            I agree to the
+                            <button
+                                type="button"
+                                id="openTermsBtn"
+                                class="text-indigo-600 font-semibold hover:underline"
+                            >
+                                Terms & Conditions
+                            </button>
+                            and Privacy Policy.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-primary w-full">
+                        Create Account
+                    </button>
+
+                    <p id="registerMessage" class="text-sm text-center hidden"></p>
+
+                </form>
+
+                <div class="flex items-center gap-4 my-6">
+                    <div class="flex-1 border-t border-slate-200 dark:border-slate-700"></div>
+                    <span class="text-xs text-slate-400">OR</span>
+                    <div class="flex-1 border-t border-slate-200 dark:border-slate-700"></div>
+                </div>
+
+                <p class="text-center text-sm text-slate-500 dark:text-slate-400">
+                    Already have an account?
+                    <a href="login.html" class="font-semibold text-indigo-600 hover:underline">
+                        Sign In
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Terms Modal -->
+    <div id="termsModal" class="modal-overlay hidden">
+
+        <div class="modal-content">
+
+            <div class="flex justify-between items-center mb-5">
+                <h2 class="text-xl font-bold">Terms & Conditions</h2>
+
+                <button
+                    type="button"
+                    id="closeTermsModal"
+                    class="text-slate-400 hover:text-red-500 text-2xl"
+                    aria-label="Close"
+                >
+                    &times;
+                </button>
+            </div>
+
+            <div class="space-y-4 text-sm text-slate-600 dark:text-slate-300 leading-7">
+
+                <section>
+                    <h3 class="font-bold text-slate-900 dark:text-white">
+                        1. Account Responsibility
+                    </h3>
+                    <p>
+                        You are responsible for maintaining the security of your
+                        account and providing accurate registration information.
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class="font-bold text-slate-900 dark:text-white">
+                        2. Community Guidelines
+                    </h3>
+                    <p>
+                        Users must treat other members respectfully and avoid
+                        publishing harmful, misleading, or abusive content.
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class="font-bold text-slate-900 dark:text-white">
+                        3. Content Ownership
+                    </h3>
+                    <p>
+                        You retain ownership of the projects and articles you publish.
+                        You are responsible for ensuring that you have the right
+                        to share your content.
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class="font-bold text-slate-900 dark:text-white">
+                        4. Privacy
+                    </h3>
+                    <p>
+                        Your account information should be handled according to
+                        the platform's privacy policy.
+                    </p>
+                </section>
+
+                <p class="text-xs text-slate-400">
+                    These are placeholder terms for the development version of CodeNest.
+                    They should be reviewed and replaced before public launch.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                id="closeTermsBottom"
+                class="btn-primary w-full mt-6"
+            >
+                Close
+            </button>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer py-5 text-center text-sm">
+        © 2026 CodeNest. Built for developers.
+    </footer>
+
+    <script src="{% static "js/app.js" %}"></script>
+    <script src="{% static "js/auth.js" %}"></script>
+
+</body>
+</html>
