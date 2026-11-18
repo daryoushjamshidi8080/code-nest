@@ -38,8 +38,22 @@ class LoginView(FormView):
         return super().get(request, *args, **kwargs)
 
 
-class RegisterView(TemplateView):
+class RegisterView(FormView):
     '''
     a class display register template
     '''
     template_name = 'accounts/register.html'
+    form_class = UserCreationForm
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        user = form.save()
+        print("User Valid :", user)
+
+        login(self.request, user) # login auto before sign up
+
+        return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        print("User invalid Error: ", form.errors)
+        return super().form_invalid(form)
