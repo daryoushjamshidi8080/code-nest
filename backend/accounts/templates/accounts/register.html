@@ -22,7 +22,7 @@
     <nav class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-            <a href="index.html" class="text-2xl font-extrabold text-indigo-600">
+            <a href="{% url "home" %}" class="text-2xl font-extrabold text-indigo-600">
                 CodeNest<span class="text-slate-800 dark:text-white">.</span>
             </a>
 
@@ -31,7 +31,7 @@
                     🌙
                 </button>
 
-                <a href="login.html"
+                <a href="{% url "login" %}"
                    class="text-sm font-semibold text-indigo-600 hover:text-indigo-700">
                     Sign In
                 </a>
@@ -60,42 +60,70 @@
             <!-- Register Card -->
             <div class="content-card p-8">
 
-                <form id="registerForm" class="space-y-5">
+                <form method='POST' id="registerForm" class="space-y-5">
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        <ul class="rounded-lg bg-red-50 border border-red-200 p-3 text-sm text-red-700 space-y-1">
+                            {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
 
                     <div>
+                        {% if form.first_name.errors %}
+                        <ul class="mt-1 text-sm text-red-500">
+                            {% for error in form.first_name.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
                         <label for="fullName" class="block text-sm font-semibold mb-2">
-                            Full Name
+                            First Name
+                        </label>
+                        
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="first_name"
+                            class="form-input"
+                            placeholder="Your first name"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+                    <div>
+                        {% if form.last_name.errors %}
+                        <ul class="mt-1 text-sm text-red-500">
+                            {% for error in form.last_name.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        <label for="fullName" class="block text-sm font-semibold mb-2">
+                            last Name
                         </label>
 
                         <input
                             type="text"
                             id="fullName"
-                            name="full_name"
+                            name="last_name"
                             class="form-input"
-                            placeholder="Your full name"
+                            placeholder="Your last name"
                             autocomplete="name"
                             required
                         >
                     </div>
 
                     <div>
-                        <label for="username" class="block text-sm font-semibold mb-2">
-                            Username
-                        </label>
-
-                        <input
-                            type="text"
-                            id="username"
-                            name="username"
-                            class="form-input"
-                            placeholder="Choose a username"
-                            autocomplete="username"
-                            minlength="3"
-                            required
-                        >
-                    </div>
-
-                    <div>
+                        {% if form.email.errors %}
+                        <ul class="mt-1 text-sm text-red-500">
+                            {% for error in form.email.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
                         <label for="registerEmail" class="block text-sm font-semibold mb-2">
                             Email Address
                         </label>
@@ -112,6 +140,13 @@
                     </div>
 
                     <div>
+                        {% if form.password2.errors %}
+                        <ul class="mt-1 text-sm text-red-500">
+                            {% for error in form.password2.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
                         <label for="registerPassword" class="block text-sm font-semibold mb-2">
                             Password
                         </label>
@@ -119,7 +154,7 @@
                         <input
                             type="password"
                             id="registerPassword"
-                            name="password"
+                            name="password1"
                             class="form-input"
                             placeholder="Create a password"
                             autocomplete="new-password"
@@ -140,7 +175,7 @@
                         <input
                             type="password"
                             id="confirmPassword"
-                            name="confirm_password"
+                            name="password2"
                             class="form-input"
                             placeholder="Repeat your password"
                             autocomplete="new-password"
@@ -185,7 +220,7 @@
 
                 <p class="text-center text-sm text-slate-500 dark:text-slate-400">
                     Already have an account?
-                    <a href="login.html" class="font-semibold text-indigo-600 hover:underline">
+                    <a href="{% url "login" %}" class="font-semibold text-indigo-600 hover:underline">
                         Sign In
                     </a>
                 </p>
