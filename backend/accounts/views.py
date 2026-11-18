@@ -1,13 +1,45 @@
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView, FormView
+from .forms import UserLoginForm, UserCreationForm
+from .models import User
+from django.urls import reverse_lazy
+from django.contrib.auth import authenticate, login
 # Create your views here.
 
 
 
-class LoginView(TemplateView):
+class LoginView(FormView):
+    """
+    A class for login users 
+    """
     template_name = 'accounts/login.html'
+    form_class = UserLoginForm
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        email = form.cleaned_data.get('email')
+        password = form.cleaned_data.get('password')
+        user = authenticate(
+            self.request,
+            username = email,
+            password = password
+        )
+
+        if user is not None:
+            login(self.request, user)
+            return super().form_valid(form)
+
+        form.add_error(None, 'Invalid email or password')
+        return super().form_invalid(form)
+    
+    def get(self, request, *args, **kwargs):
+        print('Login page openedP: ',request.POST.get('first_name'))
+        return super().get(request, *args, **kwargs)
 
 
 class RegisterView(TemplateView):
+    '''
+    a class display register template
+    '''
     template_name = 'accounts/register.html'
