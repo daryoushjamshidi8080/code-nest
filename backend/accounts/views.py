@@ -4,7 +4,7 @@ from django.views.generic import TemplateView, CreateView, FormView
 from .forms import UserLoginForm, UserCreationForm
 from .models import User
 from django.urls import reverse_lazy
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 
@@ -57,3 +57,11 @@ class RegisterView(FormView):
     def form_invalid(self, form):
         print("User invalid Error: ", form.errors)
         return super().form_invalid(form)
+
+class LogoutView(View):
+    """
+    A class for logout users 
+    """
+    def get(self, request):
+        logout(request)
+        return render(request, 'home/home.html')
