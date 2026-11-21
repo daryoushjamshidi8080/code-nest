@@ -1,3 +1,6 @@
 from django.urls import path, include
+from .views import ProfileView
 
-urlpatterns = []
+urlpatterns = [
+    path('', ProfileView.as_view(), name='profiles')
+]

@@ -58,6 +58,9 @@ class RegisterView(FormView):
         print("User invalid Error: ", form.errors)
         return super().form_invalid(form)
 
+
+
+
 class LogoutView(View):
     """
     A class for logout users 
