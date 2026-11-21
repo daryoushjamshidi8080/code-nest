@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Articles{% endblock %}
+
+{% block content %}
+    <main class="max-w-7xl mx-auto px-6 py-12">
+
+    <section class="flex flex-col md:flex-row justify-between gap-5 mb-10">
+        <div>
+            <h1 class="text-4xl font-bold">Developer Blogs</h1>
+            <p class="text-gray-500 mt-3">Read, learn and share technical knowledge.</p>
+        </div>
+
+        <button id="writeBlogBtn" class="px-6 py-3 bg-primary text-white rounded-xl">
+            + Write an Article
+        </button>
+    </section>
+
+    <section class="flex flex-col md:flex-row gap-4 mb-8">
+        <input id="blogSearch" type="search" placeholder="Search articles..." class="search-input flex-1">
+
+        <select id="blogFilter" class="search-input md:w-56">
+            <option value="all">All Categories</option>
+            <option value="python">Python</option>
+            <option value="django">Django</option>
+            <option value="software">Software Engineering</option>
+            <option value="ai">Artificial Intelligence</option>
+            <option value="iot">IoT</option>
+            <option value="database">Database</option>
+        </select>
+    </section>
+
+    <section id="blogsContainer" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <article class="content-card p-6">
+                <span class="tech-tag">software</span>
+
+                <h2 class="text-xl font-bold mt-5">
+                    Understanding SOLID Principles
+                </h2>
+
+                <p class="text-gray-500 dark:text-gray-400 text-sm leading-7 mt-3">
+                    Learn the five SOLID principles with practical programming examples.
+                </p>
+
+                <div class="flex justify-between items-center mt-6 text-xs text-gray-500">
+                    <span>Alex Johnson</span>
+                    <span>6 min read</span>
+                </div>
+
+                <button class="text-primary text-sm font-medium mt-5">
+                    Read Article →
+                </button>
+            </article>
+        
+            <article class="content-card p-6">
+                <span class="tech-tag">django</span>
+
+                <h2 class="text-xl font-bold mt-5">
+                    Django Authentication Guide
+                </h2>
+
+                <p class="text-gray-500 dark:text-gray-400 text-sm leading-7 mt-3">
+                    Understand authentication, sessions and permissions in Django.
+                </p>
+
+                <div class="flex justify-between items-center mt-6 text-xs text-gray-500">
+                    <span>Sarah Davis</span>
+                    <span>8 min read</span>
+                </div>
+
+                <button class="text-primary text-sm font-medium mt-5">
+                    Read Article →
+                </button>
+            </article>
+        
+            <article class="content-card p-6">
+                <span class="tech-tag">software</span>
+
+                <h2 class="text-xl font-bold mt-5">
+                    Git Branching Explained
+                </h2>
+
+                <p class="text-gray-500 dark:text-gray-400 text-sm leading-7 mt-3">
+                    Learn how to manage branches and collaborate with Git.
+                </p>
+
+                <div class="flex justify-between items-center mt-6 text-xs text-gray-500">
+                    <span>Daniel Kim</span>
+                    <span>5 min read</span>
+                </div>
+
+                <button class="text-primary text-sm font-medium mt-5">
+                    Read Article →
+                </button>
+            </article>
+        
+            <article class="content-card p-6">
+                <span class="tech-tag">python</span>
+
+                <h2 class="text-xl font-bold mt-5">
+                    Python for Beginners
+                </h2>
+
+                <p class="text-gray-500 dark:text-gray-400 text-sm leading-7 mt-3">
+                    Start learning Python with practical examples.
+                </p>
+
+                <div class="flex justify-between items-center mt-6 text-xs text-gray-500">
+                    <span>Michael Lee</span>
+                    <span>7 min read</span>
+                </div>
+
+                <button class="text-primary text-sm font-medium mt-5">
+                    Read Article →
+                </button>
+            </article>
+        
+            <article class="content-card p-6">
+                <span class="tech-tag">ai</span>
+
+                <h2 class="text-xl font-bold mt-5">
+                    Introduction to Artificial Intelligence
+                </h2>
+
+                <p class="text-gray-500 dark:text-gray-400 text-sm leading-7 mt-3">
+                    Explore the fundamentals of AI and machine learning.
+                </p>
+
+                <div class="flex justify-between items-center mt-6 text-xs text-gray-500">
+                    <span>James Wilson</span>
+                    <span>10 min read</span>
+                </div>
+
+                <button class="text-primary text-sm font-medium mt-5">
+                    Read Article →
+                </button>
+            </article>
+        
+            <article class="content-card p-6">
+                <span class="tech-tag">iot</span>
+
+                <h2 class="text-xl font-bold mt-5">
+                    Getting Started with ESP32
+                </h2>
+
+                <p class="text-gray-500 dark:text-gray-400 text-sm leading-7 mt-3">
+                    Build your first embedded project using ESP32.
+                </p>
+
+                <div class="flex justify-between items-center mt-6 text-xs text-gray-500">
+                    <span>Daryoush Jamshidi</span>
+                    <span>9 min read</span>
+                </div>
+
+                <button class="text-primary text-sm font-medium mt-5">
+                    Read Article →
+                </button>
+            </article>
+        </section>
+
+    <p id="noBlogs" class="hidden text-center py-16 text-gray-500">
+        No articles found.
+    </p>
+
+</main>
+{% endblock %}
