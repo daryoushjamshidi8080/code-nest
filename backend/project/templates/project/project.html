@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Project{% endblock %}
+{% block content %}
+
+
+<main class="max-w-7xl mx-auto px-6 py-12">
+
+    <section class="flex flex-col md:flex-row justify-between gap-5 mb-10">
+        <div>
+            <h1 class="text-4xl font-bold">Explore Projects</h1>
+            <p class="text-gray-500 mt-3">Discover amazing projects built by developers.</p>
+        </div>
+
+        <button id="addProjectBtn" class="px-6 py-3 bg-primary text-white rounded-xl hover:opacity-90">
+            + Add Project
+        </button>
+    </section>
+
+    <section class="flex flex-col md:flex-row gap-4 mb-8">
+        <input id="projectSearch" type="search" placeholder="Search projects..." class="search-input flex-1">
+
+        <select id="projectFilter" class="search-input md:w-52">
+            <option value="all">All Technologies</option>
+            <option value="python">Python</option>
+            <option value="django">Django</option>
+            <option value="javascript">JavaScript</option>
+            <option value="react">React</option>
+            <option value="iot">IoT</option>
+            <option value="ai">AI</option>
+        </select>
+    </section>
+
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-bold">Community Projects</h2>
+        <span id="projectCount" class="text-sm text-gray-500">5 projects</span>
+    </div>
+
+    <section id="projectsContainer" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <article class="content-card overflow-hidden">
+                <div class="project-image bg-gradient-to-br from-indigo-500 to-purple-700">
+                    📋
+                </div>
+
+                <div class="p-5">
+                    <h3 class="text-xl font-bold">Task Manager API</h3>
+
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-3">
+                        A task management REST API built with Django and PostgreSQL.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tech-tag">Python</span><span class="tech-tag">Django</span><span class="tech-tag">PostgreSQL</span>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-xs text-gray-500">
+                            By Alex Johnson
+                        </span>
+                        <button class="text-primary text-sm" data-project-id="1">
+                            View Details →
+                        </button>
+                    </div>
+                </div>
+            </article>
+        
+            <article class="content-card overflow-hidden">
+                <div class="project-image bg-gradient-to-br from-indigo-500 to-purple-700">
+                    🔐
+                </div>
+
+                <div class="p-5">
+                    <h3 class="text-xl font-bold">Smart Home Security</h3>
+
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-3">
+                        An IoT security system powered by ESP32 and Django.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tech-tag">ESP32</span><span class="tech-tag">Python</span><span class="tech-tag">Django</span>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-xs text-gray-500">
+                            By Daryoush Jamshidi
+                        </span>
+                        <button class="text-primary text-sm" data-project-id="2">
+                            View Details →
+                        </button>
+                    </div>
+                </div>
+            </article>
+        
+            <article class="content-card overflow-hidden">
+                <div class="project-image bg-gradient-to-br from-indigo-500 to-purple-700">
+                    🤖
+                </div>
+
+                <div class="p-5">
+                    <h3 class="text-xl font-bold">AI Chatbot</h3>
+
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-3">
+                        An intelligent chatbot application powered by AI.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tech-tag">Python</span><span class="tech-tag">AI</span><span class="tech-tag">API</span>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-xs text-gray-500">
+                            By Daniel Kim
+                        </span>
+                        <button class="text-primary text-sm" data-project-id="3">
+                            View Details →
+                        </button>
+                    </div>
+                </div>
+            </article>
+        
+            <article class="content-card overflow-hidden">
+                <div class="project-image bg-gradient-to-br from-indigo-500 to-purple-700">
+                    🌐
+                </div>
+
+                <div class="p-5">
+                    <h3 class="text-xl font-bold">Portfolio Website</h3>
+
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-3">
+                        A responsive personal portfolio website.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tech-tag">JavaScript</span><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-xs text-gray-500">
+                            By Sarah Davis
+                        </span>
+                        <button class="text-primary text-sm" data-project-id="4">
+                            View Details →
+                        </button>
+                    </div>
+                </div>
+            </article>
+        
+            <article class="content-card overflow-hidden">
+                <div class="project-image bg-gradient-to-br from-indigo-500 to-purple-700">
+                    📊
+                </div>
+
+                <div class="p-5">
+                    <h3 class="text-xl font-bold">React Dashboard</h3>
+
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-3">
+                        A modern dashboard for data visualization.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tech-tag">React</span><span class="tech-tag">JavaScript</span>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-xs text-gray-500">
+                            By Michael Lee
+                        </span>
+                        <button class="text-primary text-sm" data-project-id="5">
+                            View Details →
+                        </button>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+    <p id="noProjects" class="hidden text-center py-16 text-gray-500">
+        No projects found.
+    </p>
+
+</main>
+{% endblock %}
+
