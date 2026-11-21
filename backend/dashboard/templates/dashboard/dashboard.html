@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Dashboard{% endblock title %}
+{% block content %}
+   <main class="max-w-5xl mx-auto px-6 py-12">
+
+    <section class="content-card p-8">
+
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+
+            <div class="avatar-placeholder w-28 h-28 text-3xl">DJ</div>
+
+            <div class="flex-1 text-center md:text-left">
+                <h1 class="text-3xl font-bold">Daryoush Jamshidi</h1>
+                <p class="text-primary mt-2">Backend Developer</p>
+                <p class="text-gray-500 mt-3">
+                    Python and Django developer interested in software engineering and IoT.
+                </p>
+
+                <div class="flex flex-wrap justify-center md:justify-start gap-3 mt-5">
+                    <a href="#" class="text-sm text-primary">GitHub</a>
+                    <a href="#" class="text-sm text-primary">LinkedIn</a>
+                    <a href="#" class="text-sm text-primary">Website</a>
+                </div>
+            </div>
+
+            <button id="editProfileBtn" class="px-5 py-2 rounded-lg border dark:border-gray-700">
+                Edit Profile
+            </button>
+
+        </div>
+
+        <hr class="my-8 border-gray-200 dark:border-gray-700">
+
+        <h2 class="text-xl font-bold mb-4">About Me</h2>
+        <p class="text-gray-600 dark:text-gray-400 leading-8">
+            I enjoy building backend applications, designing APIs and working with
+            embedded systems. I am interested in creating reliable and scalable software.
+        </p>
+
+        <h2 class="text-xl font-bold mt-8 mb-4">Technical Skills</h2>
+        <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Django</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Git</span>
+            <span class="tech-tag">ESP32</span>
+        </div>
+
+        <div class="flex flex-wrap justify-between items-center gap-3 mt-10 mb-5">
+            <h2 class="text-xl font-bold">My Projects</h2>
+            <button id="addProjectBtn" class="px-4 py-2 rounded-lg bg-primary text-white">
+                + Add Project
+            </button>
+        </div>
+
+        <div id="myProjectsContainer" class="grid md:grid-cols-2 gap-5">
+            <article class="content-card p-5">
+                <h3 class="font-bold text-lg">SecureHome IoT System</h3>
+                <p class="text-gray-500 text-sm mt-3">
+                    Smart home security system using ESP32 and Django.
+                </p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="tech-tag">ESP32</span><span class="tech-tag">Python</span><span class="tech-tag">Django</span>
+                </div>
+            </article>
+        
+            <article class="content-card p-5">
+                <h3 class="font-bold text-lg">RFID Access Control</h3>
+                <p class="text-gray-500 text-sm mt-3">
+                    An RFID-based access control application.
+                </p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="tech-tag">Python</span><span class="tech-tag">RFID</span><span class="tech-tag">IoT</span>
+                </div>
+            </article>
+        </div>
+
+        <div class="flex flex-wrap justify-between items-center gap-3 mt-10 mb-5">
+            <h2 class="text-xl font-bold">My Articles</h2>
+            <button id="writeBlogBtn" class="px-4 py-2 rounded-lg bg-primary text-white">
+                + Write Article
+            </button>
+        </div>
+
+        <div id="myBlogsContainer" class="space-y-4">
+            <article class="content-card p-5">
+                <h3 class="font-bold">Learning Django Class-Based Views</h3>
+                <p class="text-gray-500 text-sm mt-2">
+                    A practical introduction to Django CBVs.
+                </p>
+            </article>
+        
+            <article class="content-card p-5">
+                <h3 class="font-bold">Understanding SOLID Principles</h3>
+                <p class="text-gray-500 text-sm mt-2">
+                    Five important principles of object-oriented design.
+                </p>
+            </article>
+        </div>
+
+        <div class="mt-10 flex flex-wrap items-center justify-between gap-4">
+            <div>
+                <h2 class="text-xl font-bold">My Resume</h2>
+                <p class="text-sm text-gray-500 mt-2">Create and manage your professional resume.</p>
+            </div>
+
+            <button id="resumeBtn" class="px-5 py-3 rounded-lg bg-primary text-white">
+                Build My Resume
+            </button>
+        </div>
+
+    </section>
+
+</main>
+{% endblock %}

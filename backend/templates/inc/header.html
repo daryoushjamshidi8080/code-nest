@@ -52,10 +52,10 @@
         {% if  user.is_authenticated %}
         <!-- dashboard -->
          {{ user.first_name }}
-        <a href="#"
+        <a href="{% url 'dashboard' %}"
             class="px-5 py-2.5 rounded-xl bg-primary text-white hover:bg-secondary transition text-sm font-medium">
 
-            Profile
+            My Profile
         </a>
         {% else %}
 
