@@ -5,6 +5,7 @@ from .forms import UserLoginForm, UserCreationForm
 from .models import User
 from django.urls import reverse_lazy
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 # Create your views here.
 
 
@@ -28,8 +29,10 @@ class LoginView(FormView):
 
         if user is not None:
             login(self.request, user)
+            messages.success(self.request, 'You have successfully logged in.')
             return super().form_valid(form)
 
+        
         form.add_error(None, 'Invalid email or password')
         return super().form_invalid(form)
     

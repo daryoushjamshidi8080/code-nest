@@ -1,0 +1,87 @@
+{% if messages %}
+{% for message in messages %}
+
+<div class=" absolute top-20 left-1 z-50 w-fit alert-message
+            flex items-center gap-3 p-3 rounded-xl border
+            {% if 'success' in message.tags or 'update' in message.tags %}
+                bg-green-50 border-green-200
+            {% elif message.tags == 'warning' %}
+                bg-yellow-50 border-yellow-200
+            {% elif message.tags == 'error' %}
+                bg-red-50 border-red-200
+            {% endif %}
+        ">
+
+    <!-- Icon -->
+    {% if 'success' in message.tags or 'update' in message.tags %}
+    <div class="w-8 h-8 flex justify-center items-center rounded-lg bg-green-100 text-green-700">
+        <span>✓</span>
+    </div>
+    {% elif message.tags == 'warning' %}
+    <div class="w-8 h-8 flex justify-center items-center rounded-lg bg-yellow-100 text-yellow-700">
+        <span>!</span>
+    </div>
+    {% elif message.tags == 'error' %}
+    <div class="w-8 h-8 flex justify-center items-center rounded-lg bg-red-100 text-red-700">
+        <span>×</span>
+    </div>
+    {% endif %}
+
+
+    <!-- Message Content -->
+    <div class="flex-1">
+        <p class="text-xs font-semibold
+                    {% if 'success' in message.tags or 'update' in message.tags %}
+                        text-green-800
+                    {% elif message.tags == 'warning' %}
+                        text-yellow-800
+                    {% elif message.tags == 'error' %}
+                        text-red-800
+                    {% endif %}
+                ">
+            {% if 'update' in message.tags %}
+            Update
+            {% elif message.tags == 'warning' %}
+            Warning
+            {% elif message.tags == 'success' %}
+            Success
+            {% elif message.tags == 'error' %}
+            Error
+            {% endif %}
+        </p>
+
+        <p class="text-xs
+                    {% if 'success' in message.tags or 'update' in message.tags %}
+                        text-green-800
+                    {% elif message.tags == 'warning' %}
+                        text-yellow-900
+                    {% elif message.tags == 'error' %}
+                        text-red-900
+                    {% endif %}
+                ">
+            {{ message }}
+        </p>
+    </div>
+
+    <!-- Close Button -->
+    <button type="button" onclick="this.parentElement.remove()" class="w-6 h-6 flex items-center justify-center rounded-full border text-gray-500 hover:text-gray-900 transition
+            {% if 'success' in message.tags or 'update' in message.tags%}
+                border-green-200
+            {% elif 'warning' in message.tags %}
+                border-yellow-200
+            {% elif 'error' in message.tags %}
+                border-red-200
+            {% endif %}
+        ">
+        &times;
+    </button>
+</div>
+<script>
+    // document.querySelectorAll('.alert-message').forEach(alert => {
+    //     setTimeout(() => {
+    //         alert.remove();
+    //     }, 4000);
+    // });
+</script>
+{% endfor %}
+{% endif %}
